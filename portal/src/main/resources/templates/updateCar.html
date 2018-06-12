@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal" th:action="@{/car/updateCar}" method="post"
+				enctype="multipart/form-data">
+				<fieldset>
+					<legend class="center-block">
+						Update Car Information<span style="font-size: small"> * is a
+							required field</span>
+					</legend>
+					
+					<input hidden="hidden" name="id" th:value="${car.id}" />
+
+
+					<!-- size -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="size">* Size</label>
+
+						<div class="col-md-8">
+							<input type="text" name="size" class="form-control" id="size"
+								th:value="${car.size}" required="required" placeholder="Size" />
+							<span class="help-block">Size of the car</span>
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="manufacturer">*
+							Manufacturer</label>
+						<div class="col-md-8">
+							<input type="text" name="manufacturer" class="form-control" id="manufacturer"
+								th:value="${car.manufacturer}" required="required"
+								placeholder="Manufacturer" /> <span class="help-block">Manufacturer
+								of the car</span>
+						</div>
+					</div>
+
+					<!-- color -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="color">Color</label>
+						<div class="col-md-8">
+							<input type="text" name="color" class="form-control"
+								id="color" th:value="${car.color}"
+								placeholder="Color" /> <span class="help-block">Color
+								of the car</span>
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="yearOfManufacturer">Manufacturer
+							Date</label>
+						<div class="col-md-8">
+							<input type="date" class="form-control" id="yearOfManufacturer"
+								name="yearOfManufacturer" th:value="${car.yearOfManufacturer}"
+								placeholder="ublication Date" /> <span class="help-block">Manufacturer
+								Date of the car</span>
+						</div>
+					</div>
+
+					<!-- nct -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="nct">NCT</label>
+						<div class="col-md-8">
+							<select th:value="${car.nct}" id="nct" name="nct"
+								class="form-control">
+								<option value="yes">Yes</option>
+								<option value="no">no</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- category -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="category">*
+							Category</label>
+						<div class="col-md-8">
+							<select th:value="${car.category}" id="category" name="category"
+									class="form-control">
+								<option value="" selected="selected" disabled="disabled">Please
+									select an option...</option>
+								<option value="Sports"
+										th:selected="(${car.category}=='Sports')">Sports</option>
+								<option value="Hatchback"
+										th:selected="(${car.category}=='Hatchback')">Hatchback</option>
+								<option value="SUV"
+										th:selected="(${car.category}=='SUV')">SUV</option>
+								<option value="Saloon"
+										th:selected="(${car.category}=='Saloon')">Saloon</option>
+								<option value="Family"
+										th:selected="(${car.category}=='Family')">Family</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- registration -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="registration">Registration</label>
+						<div class="col-md-8">
+							<select th:value="${car.registration}" id="registration" name="registration"
+									class="form-control">
+								<option value="imported">Imported</option>
+								<option value="non-imported">Non-Imported</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- doorsQty -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="doorsQty">Doors</label>
+
+						<div class="col-md-8">
+							<input type="text" name="doorsQty" class="form-control" id="doorsQty"
+								   th:value="${car.doorsQty}" placeholder="Doors" /> <span
+								class="help-block">Doors on the car</span>
+						</div>
+					</div>
+
+					<!-- list price -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="listPrice">List
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">€</span> <input
+									th:value="${car.listPrice}" type="number" name="listPrice" step="0.01"
+									class="form-control" id="listPrice" placeholder="List Price" />
+							</div>
+							<span class="help-block">List price of the car</span>
+						</div>
+					</div>
+
+					<!-- our price -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="ourPrice">Our
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">€</span> <input
+									th:value="${car.ourPrice}" type="number" name="ourPrice" step="0.01"
+									class="form-control" id="ourPrice" placeholder="Our Price" />
+							</div>
+							<span class="help-block">Our price of the car</span>
+						</div>
+					</div>
+
+					<!-- in stock number -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="inStockNumber">Number
+							in stock</label>
+						<div class="col-md-8">
+							<input th:value="${car.inStockNumber}" type="number"
+								name="inStockNumber" class="form-control" id="inStockNumber"
+								placeholder="Number of in-stock copies" /> <span
+								class="help-block">Number of in-stock copies</span>
+						</div>
+					</div>
+
+					<!-- status of car -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="status">Status</label>
+						<div class="col-md-8">
+							<label><input value="true" type="radio" name="active"
+								th:checked="${car.active}" /> Active </label> <label><input
+								value="false" type="radio" name="active" th:checked="${!car.active}"/>
+								Inactive </label> <span class="help-block">Whether the car is
+								active or inactive</span>
+						</div>
+					</div>
+
+					<!-- description -->
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="description">Description</label>
+						<div class="col-md-8">
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${car.description}" th:text="${car.description}"
+								placeholder="Description" />
+							<span class="help-block">Description of the car</span>
+						</div>
+					</div>
+
+					<!-- upload image -->
+					<div class="form-group">
+						<div class="col-md-2">
+							<label for="carImage">Upload car image</label>
+						</div>
+						<div class="col-md-8">
+							<input id="carImage" type="file" name="carImage"
+								th:value="${car.carImage}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Update Car</button>
+							<a class="btn btn-danger" th:href="@{/car/carInfo(id=${car.id})}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    databasePlatform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    database: mysql
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/carlot
+    username: root
+    password: root
+
+
+  thymeleaf:
+    cache: false
+server:
+  port: 8081
+  context-path: /
+
+---
+spring:
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+
+
+
+

@@ -1,0 +1,35 @@
+version: '2.0'
+
+services:
+  carlot:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  carbuy:
+    image: lmac/carbuy
+    depends_on:
+      - carlot
+    ports:
+      - 8082:8082
+    environment:
+      - DATABASE_HOST=${MYSQL_HOST}
+      - DATABASE_USER=${MYSQL_USER}
+      - DATABASE_PASSWORD=${MYSQL_PASSWORD}
+      - DATABASE_NAME=${MYSQL_DATABASE}
+      - DATABASE_PORT=${MYSQL_PORT}
+
+  portal:
+      image: lmac/portal
+      depends_on:
+        - carlot
+      ports:
+        - 8081:8081
+      environment:
+        - DATABASE_HOST=${MYSQL_HOST}
+        - DATABASE_USER=${MYSQL_USER}
+        - DATABASE_PASSWORD=${MYSQL_PASSWORD}
+        - DATABASE_NAME=${MYSQL_DATABASE}
+        - DATABASE_PORT=${MYSQL_PORT}

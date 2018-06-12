@@ -1,0 +1,52 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    databasePlatform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    database: mysql
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/carlot
+    username: demo
+    password: root
+
+
+  mail:
+    host: smtp.gmail.com
+    username: lesliemccarthy364@gmail.com
+    password: project33
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+      support:
+        email: lesliemccarthy364@gmail.com
+
+
+
+
+
+
+  thymeleaf:
+    cache: false
+server:
+  port: 8082
+
+---
+spring:
+  profiles: container
+  datasource:
+    url: jdbc:mysql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+
+
+
+
