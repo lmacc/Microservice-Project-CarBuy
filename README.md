@@ -1,0 +1,4 @@
+# Microservice-Project-CarBuy
+Project was developed using intellij IDE. It’s a Spring Boot application. The folder consists of two modules both are executable namely carbuy and portal. Carbuy is used to make purchases and portal is used for administration i.e. adding and removing cars for sale or updating. 
+The root folder has a docker-compose.yml file and the command to use is: Docker-compose up this creates the mysql docker container for application and also builds the carbuy and portal modules. But before issueing docker-compose up command the module docker images must be created using maven as I have used maven plugins in the pom.xml files. First cd into carbuy and issue this command: mvn clean package docker:build Do the same for portal, command mvn clean package docker:build
+This creates the .jar files for Spring Boot.
